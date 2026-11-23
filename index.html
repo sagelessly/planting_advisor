@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rwanda Planting Advisor</title>
+    <meta name="description" content="Provide informed planting decisions with local weather forecats for Rwandan districts.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-brand">
+                <span class="logo" aria-hidden="true">🌱</span>
+                <h1>Rwanda Planting Advisor</h1>
+            </div>
+            <div class="header-meta">
+                <p id="currentDate" class="current-date"></p>
+                <p class="api-status">
+                    <span id="apiStatusDot" class="status-dot status-unknown" aria-hidden="true"></span>
+                    <span id="apiStatusText">Checking API status..</span>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="intro" aria-labelledby="introTitle">
+            <h2 id="introTitle">Welcome to the Rwanda Planting Advisor</h2>
+            <p>Explore the upcoming 7 day weather forecast for your district and know the suitable conditions for your selected crops.</p>
+        </section>
+
+        <section class="filters" aria-labelledby="filtersTitle">
+            <h2 id="filtersTitle" class="visually-hidden">Select and filter districts</h2>
+            <div class="filters-grid">
+                    <div class="field">
+                        <label for="searchInput">Search district</label>
+                        <input type="search" id="searchInput" placeholder="e.g: Musanze" autocomplete="off" />
+                    </div>
+
+                    <div class="field">
+                        <label for="provinceSelect">Province</label>
+                        <select id="provinceSelect">
+                            <option value="">All provinces</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="cropSelect">Crop</label>
+                        <select id="cropSelect">
+                            <option value="">All crops</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="sortSelect">Sort By</label>
+                        <select id="sortSelect">
+                            <option value="suitability">Suitability: Best first</option>
+                            <option value="suitability">Suitability: Worst first</option>
+                            <option value="district">District: A-Z</option>
+                            <option value="district">District: Z-A</option>
+                        </select>
+                    </div>
+
+                    <div class="field field-actions">
+                        <button type="button" id="clearFilterBtn" class="btn btn-secondary">Clear Filters</button>
+                    </div>
+            </div>
+
+            <p id="cachedNotice" class="cache-notice" hidden>Show saved forecast may be outdated: <span id="cacheTime"></span>
+            </p>
+        </section>
+
+        <section class="summary" aria-label="Summary of filtered results">
+            <div class="summary-card summary-district">
+                <span class="summary-number" id="summaryTotal">0</span>
+                <span class="summary-label">Districts displayed</span>
+            </div>
+            <div class="summary-card summary-good">
+                <span class="summary-number" id="summaryGood">0</span>
+                <span class="summary-label">Good to plant</span>
+            </div>
+            <div class="summary-card summary-precaution">
+                <span class="summary-number" id="summaryPrecaution">0</span>
+                <span class="summary-label">Take precautions</span>
+            </div>
+
+            <div class="summary-card summary-wait">
+                <span class="summary-number" id="summaryWait">0</span>
+                <span class="summary-label">Wait</span>
+            </div>
+        </section>
+
+        <section class="results" aria-live="polite" aria-busy="false">
+            <div id="loadingState" class="state-box" hidden>
+                <div class="spinner" aria-hidden="true"> </div>
+                <p>Fetching the 7-day forecasts from OpenMeteo API</p>
+            </div>
+
+            <div id="errorState" class="state-box state-error" hidden>
+                    <p id="errorMessage">
+                        Something went wrong while loading the forecasts
+                    </p>
+                    <button type="button" id="retryBtn" class="btn btn-primary">Retry forecast</button>
+            </div>
+
+            <div id="emptyState" class="state-box" hidden>
+                    <p>No districts match your search or filters</p>
+                    <button type="button" id="emptyClearBtn" class="btn btn-secondary">Clear filters</button>
+            </div>
+
+            <div id="tableWrap" class="table-wrap" hidden>
+                    <table id=resultsTable>
+                        <thead>
+                            <tr>
+                                <th scope="col">District</th>
+                                <th scope="col">Province</th>
+                                <th scope="col">Expected Rainfall</th>
+                                <th scope="col">Average</th>
+                                <th scope="col">Suitability</th>
+                                <th scope="col">Recommendation</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultsBody"></tbody>
+                    </table>
+            </div>
+
+            <div id="cardsWrap" class="cards-wrap" hidden></div>
+        </section>
+
+        <p class="disclaimer">
+            These recommendations are based on a seven-day weaather assessment.
+            Farmers are encourages to consider also their soil moisture, soil type, planting dates, seed varieties and advice from local agricultural extension officers
+        </p>
+    </main>
+
+    <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-panel" role="document">
+            <button type="button" class="modal-close" data-close aria-label="Close detailes">×</button>
+            <h2 id="modalTitle"></h2>
+            <p id="modalSubtitle" class="modal-subtitle"></p>
+            <div id="modalSummary" class="modal-summary"></div>
+            <h3>7-day Forecast</h3>
+            <div id="modalDaily" class="modal-daily"></div>
+            <p id="modalExplanation" class="modal-explanation"></p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-close>Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
+            Rwanda Planting Advisor
+        </p>
+    </footer>
+
+    <script src="app.js"></script>
+    
+</body>
+</html>
