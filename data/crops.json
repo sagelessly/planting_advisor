@@ -1,0 +1,46 @@
+[
+  {
+    "id": "maize",
+    "name": "Maize",
+    "kinyarwanda": "Ibigori",
+    "minTemp": 18,
+    "maxTemp": 27,
+    "minRain7d": 15,
+    "maxRain7d": 60,
+    "extremeRain7d": 100,
+    "note": "Needs warm conditions and steady moisture at planting. Waterlogging harms seedlings."
+  },
+  {
+    "id": "beans",
+    "name": "Beans",
+    "kinyarwanda": "Ibishyimbo",
+    "minTemp": 15,
+    "maxTemp": 25,
+    "minRain7d": 10,
+    "maxRain7d": 45,
+    "extremeRain7d": 80,
+    "note": "Sensitive to both drought and waterlogging. Seeds rot in soaked soil."
+  },
+  {
+    "id": "irish_potato",
+    "name": "Irish Potato",
+    "kinyarwanda": "Ibirayi",
+    "minTemp": 10,
+    "maxTemp": 20,
+    "minRain7d": 15,
+    "maxRain7d": 50,
+    "extremeRain7d": 90,
+    "note": "Prefers cool highland conditions. Heavy rain raises blight and rot risk."
+  },
+  {
+    "id": "cassava",
+    "name": "Cassava",
+    "kinyarwanda": "Imyumbati",
+    "minTemp": 20,
+    "maxTemp": 30,
+    "minRain7d": 5,
+    "maxRain7d": 70,
+    "extremeRain7d": 120,
+    "note": "Drought tolerant once established. Cuttings need warmth and well-drained soil."
+  }
+]

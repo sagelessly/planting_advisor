@@ -1,0 +1,14 @@
+[
+  { "name": "Nyarugenge", "province": "Kigali City", "lat": -1.95, "lon": 30.05 },
+  { "name": "Gasabo", "province": "Kigali City", "lat": -1.88, "lon": 30.12 },
+  { "name": "Huye", "province": "Southern", "lat": -2.60, "lon": 29.74 },
+  { "name": "Muhanga", "province": "Southern", "lat": -2.08, "lon": 29.75 },
+  { "name": "Musanze", "province": "Northern", "lat": -1.50, "lon": 29.63 },
+  { "name": "Gicumbi", "province": "Northern", "lat": -1.58, "lon": 30.07 },
+  { "name": "Nyagatare", "province": "Eastern", "lat": -1.30, "lon": 30.33 },
+  { "name": "Kayonza", "province": "Eastern", "lat": -1.88, "lon": 30.65 },
+  { "name": "Bugesera", "province": "Eastern", "lat": -2.20, "lon": 30.15 },
+  { "name": "Rubavu", "province": "Western", "lat": -1.68, "lon": 29.35 },
+  { "name": "Karongi", "province": "Western", "lat": -2.07, "lon": 29.35 },
+  { "name": "Rusizi", "province": "Western", "lat": -2.48, "lon": 28.90 }
+]
