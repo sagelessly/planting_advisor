@@ -833,8 +833,9 @@ function wireEvents(){
 }
 
 function clearFilters() {
-  el.searchInput.value = '';
-  el.provinceSelect.value = '';
+  el.searchInput.value = "";
+  el.provinceSelect.value = "";
+  el.cropSelect.value = "";
   el.sortSelect.value = 'suitability-desc';
   renderAll();
 }
