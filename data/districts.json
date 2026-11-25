@@ -1,14 +1,14 @@
 [
-  { "name": "Nyarugenge", "province": "Kigali City", "lat": -1.95, "lon": 30.05 },
-  { "name": "Gasabo", "province": "Kigali City", "lat": -1.88, "lon": 30.12 },
-  { "name": "Huye", "province": "Southern", "lat": -2.60, "lon": 29.74 },
-  { "name": "Muhanga", "province": "Southern", "lat": -2.08, "lon": 29.75 },
-  { "name": "Musanze", "province": "Northern", "lat": -1.50, "lon": 29.63 },
-  { "name": "Gicumbi", "province": "Northern", "lat": -1.58, "lon": 30.07 },
-  { "name": "Nyagatare", "province": "Eastern", "lat": -1.30, "lon": 30.33 },
-  { "name": "Kayonza", "province": "Eastern", "lat": -1.88, "lon": 30.65 },
-  { "name": "Bugesera", "province": "Eastern", "lat": -2.20, "lon": 30.15 },
-  { "name": "Rubavu", "province": "Western", "lat": -1.68, "lon": 29.35 },
-  { "name": "Karongi", "province": "Western", "lat": -2.07, "lon": 29.35 },
-  { "name": "Rusizi", "province": "Western", "lat": -2.48, "lon": 28.90 }
+  { "name": "Nyarugenge", "province": "Kigali City", "latitude": -1.95, "longitude": 30.03 },
+  { "name": "Gasabo", "province": "Kigali City", "latitude": -1.88, "longitude": 30.12 },
+  { "name": "Huye", "province": "Southern Province", "latitude": -2.60, "longitude": 29.71 },
+  { "name": "Muhanga", "province": "Southern Province", "latitude": -2.00, "longitude": 29.70 },
+  { "name": "Musanze", "province": "Northern Province", "latitude": -1.48, "longitude": 29.61 },
+  { "name": "Gicumbi", "province": "Northern Province", "latitude": -1.60, "longitude": 30.05 },
+  { "name": "Nyagatare", "province": "Eastern Province", "latitude": -1.28, "longitude": 30.31 },
+  { "name": "Rwamagana", "province": "Eastern Province", "latitude": -1.93, "longitude": 30.43 },
+  { "name": "Bugesera", "province": "Eastern Province", "latitude": -2.15, "longitude": 30.09 },
+  { "name": "Rubavu", "province": "Western Province", "latitude": -1.67, "longitude": 29.25 },
+  { "name": "Karongi", "province": "Western Province", "latitude": -2.07, "longitude": 29.41 },
+  { "name": "Rusizi", "province": "Western Province", "latitude": -2.48, "longitude": 28.90 }
 ]

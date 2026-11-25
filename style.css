@@ -172,10 +172,10 @@ main{
     width: 100%;
 }
 
-.field input:focus,
-.field select:focus{
-    outline: 3px solid rgba(90, 163, 103, 0.4);
-    outline-offset: 0;
+.field input:focus-visible,
+.field select:focus-visible{
+    outline: 3px solid rgba(90, 163, 103, 0.5);
+    outline-offset: 2px;
     border-color: var(--leaf);
 }
 .field-actions { justify-content: flex-end; align-items: stretch; }
@@ -203,7 +203,7 @@ main{
 .btn-secondary { background: #fff; color: var(--forest-dark); border-color: var(--line); }
 .btn-secondary:hover { background: var(--leaf-light); }
 
-.cache_notice{
+.cache-notice{
     margin: 14px 0 0;
     padding: 10px 12px;
     background: var(--precaution-bg);
@@ -229,6 +229,7 @@ main{
     display: flex;
     flex-direction: column;
     gap: 4px;
+    border-left-width: 5px;
 }
 
 .summary-card .summary-number{
@@ -283,9 +284,25 @@ tbody tr:hover { background: var(--leaf-light); }
 
 .badge-good { background: var(--good-bg); color: var(--good); }
 .badge-precaution { background: var(--precaution-bg); color: var(--precaution); }
-.badge-wait { background: var(--wait-bg); color: var(--wait); }
+.badge-no-data {
+    background: #e5e7eb;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
 
-.cards-wrap { display: none; flex-direction: column; gap: 14px; }
+.badge-wait{
+    background: var(--wait-bg);
+    color: var(--wait);
+}
+.cards-wrap { 
+    display: none; 
+    flex-direction: column; 
+    gap: 14px;
+}
+.cards-wrap[hidden]{
+    display: none !important;
+}
+
 .district-card{
     background: var(--card);
     border: 1px solid var(--line);
@@ -413,7 +430,7 @@ tbody tr:hover { background: var(--leaf-light); }
 .day-cell .day-rain { font-weight: 700; color: #2c6da8; }
 .day-cell .day-temp { font-size: 0.85rem; color: var(--ink); margin-top: 2px; }
 
-.moddal-explanation{
+.modal-explanation{
     margin: 14px 0 0;
     font-size: 0.9rem;
     color: var(--ink);
@@ -444,6 +461,18 @@ tbody tr:hover { background: var(--leaf-light); }
     .header-meta { text-align: left; width:100%; }
     .site-header h1{ font-size: 1.2rem}
     .intro h2 {font-size: 1.25rem}
+}
+
+@media(max-width: 480px){
+    .filters-grid{
+        grid-template-columns: 1fr;
+    }
+    .filters{
+        padding: 14px;
+    }
+    .summary{
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
 }
 
 

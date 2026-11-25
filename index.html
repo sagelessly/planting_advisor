@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rwanda Planting Advisor</title>
-    <meta name="description" content="Provide informed planting decisions with local weather forecats for Rwandan districts.">
+    <meta name="description" content="Provide informed planting decisions with local weather forecasts for Rwandan districts.">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -18,7 +19,7 @@
             </div>
             <div class="header-meta">
                 <p id="currentDate" class="current-date"></p>
-                <p class="api-status">
+                <p class="api-status" aria-live="polite">
                     <span id="apiStatusDot" class="status-dot status-unknown" aria-hidden="true"></span>
                     <span id="apiStatusText">Checking API status..</span>
                 </p>
@@ -49,27 +50,27 @@
 
                     <div class="field">
                         <label for="cropSelect">Crop</label>
-                        <select id="cropSelect">
-                            <option value="">All crops</option>
+                        <select id="cropSelect" required>
+                            <option value="" disabled selected>Select a crop</option>
                         </select>
                     </div>
 
                     <div class="field">
                         <label for="sortSelect">Sort By</label>
                         <select id="sortSelect">
-                            <option value="suitability">Suitability: Best first</option>
-                            <option value="suitability">Suitability: Worst first</option>
-                            <option value="district">District: A-Z</option>
-                            <option value="district">District: Z-A</option>
+                            <option value="suitability-desc">Suitability: Best first</option>
+                            <option value="suitability-asc">Suitability: Worst first</option>
+                            <option value="district-asc">District: A-Z</option>
+                            <option value="district-desc">District: Z-A</option>
                         </select>
                     </div>
 
                     <div class="field field-actions">
-                        <button type="button" id="clearFilterBtn" class="btn btn-secondary">Clear Filters</button>
+                        <button type="button" id="clearFiltersBtn" class="btn btn-secondary">Clear Filters</button>
                     </div>
             </div>
 
-            <p id="cachedNotice" class="cache-notice" hidden>Show saved forecast may be outdated: <span id="cacheTime"></span>
+            <p id="cacheNotice" class="cache-notice" hidden>Showing a saved forecast, which may be outdated: <span id="cacheTime"></span>
             </p>
         </section>
 
@@ -96,7 +97,7 @@
         <section class="results" aria-live="polite" aria-busy="false">
             <div id="loadingState" class="state-box" hidden>
                 <div class="spinner" aria-hidden="true"> </div>
-                <p>Fetching the 7-day forecasts from OpenMeteo API</p>
+                <p>Fetching the 7-day forecasts from Open-Meteo</p>
             </div>
 
             <div id="errorState" class="state-box state-error" hidden>
@@ -112,13 +113,13 @@
             </div>
 
             <div id="tableWrap" class="table-wrap" hidden>
-                    <table id=resultsTable>
+                    <table id="resultsTable">
                         <thead>
                             <tr>
                                 <th scope="col">District</th>
                                 <th scope="col">Province</th>
-                                <th scope="col">Expected Rainfall</th>
-                                <th scope="col">Average</th>
+                                <th scope="col">7-day rainfall</th>
+                                <th scope="col">Average Temperature</th>
                                 <th scope="col">Suitability</th>
                                 <th scope="col">Recommendation</th>
                                 <th scope="col">Action</th>
@@ -132,15 +133,15 @@
         </section>
 
         <p class="disclaimer">
-            These recommendations are based on a seven-day weaather assessment.
-            Farmers are encourages to consider also their soil moisture, soil type, planting dates, seed varieties and advice from local agricultural extension officers
+            These recommendations are based on a seven-day weather assessment.
+            Farmers are encouraged to also consider soil moisture, soil type, planting dates, seed varieties and advice from local agricultural extension officers.
         </p>
     </main>
 
     <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-backdrop" data-close></div>
         <div class="modal-panel" role="document">
-            <button type="button" class="modal-close" data-close aria-label="Close detailes">×</button>
+            <button type="button" class="modal-close" data-close aria-label="Close details">×</button>
             <h2 id="modalTitle"></h2>
             <p id="modalSubtitle" class="modal-subtitle"></p>
             <div id="modalSummary" class="modal-summary"></div>
@@ -155,8 +156,9 @@
 
     <footer class="site-footer">
         <p>Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
-            Rwanda Planting Advisor
+            | Crop references: FAO EcoCrop | Suitability estimates: Modeled data
         </p>
+        <p>Rwanda Planting Advisor</p>
     </footer>
 
     <script src="app.js"></script>

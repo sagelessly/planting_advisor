@@ -1,46 +1,88 @@
 [
   {
-    "id": "maize",
     "name": "Maize",
-    "kinyarwanda": "Ibigori",
-    "minTemp": 18,
-    "maxTemp": 27,
-    "minRain7d": 15,
-    "maxRain7d": 60,
-    "extremeRain7d": 100,
-    "note": "Needs warm conditions and steady moisture at planting. Waterlogging harms seedlings."
+    "documented": {
+      "minTemp": 18,
+      "maxTemp": 33,
+      "minRain": 600,
+      "maxRain": 1200,
+      "rainPeriod": "annual",
+      "note": "FAO EcoCrop documents maize (Zea mays) as having an optimal temperature range of 18-33 degC and an optimal annual rainfall range of 600-1200 mm. These are climatic suitability parameters, not seven-day rainfall requirements or absolute survival limits."
+    },
+    "heuristic": {
+      "minTemp": 18,
+      "maxTemp": 30,
+      "minRain": 20,
+      "maxRain": 80,
+      "basis": "Application-defined weekly heuristic, NOT a published requirement. 20-80 mm over 7 days is an initial application assumption for rainfall adequacy. Actual crop water requirements depend on growth stage, evapotranspiration, soil moisture and drainage.",
+      "maxRainExtremeFactor": 1.5
+    },
+    "source": "FAO EcoCrop (Zea mays)",
+    "sourceUrl": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2175"
   },
   {
-    "id": "beans",
     "name": "Beans",
-    "kinyarwanda": "Ibishyimbo",
-    "minTemp": 15,
-    "maxTemp": 25,
-    "minRain7d": 10,
-    "maxRain7d": 45,
-    "extremeRain7d": 80,
-    "note": "Sensitive to both drought and waterlogging. Seeds rot in soaked soil."
+    "documented": {
+      "minTemp": 16,
+      "maxTemp": 25,
+      "minRain": 500,
+      "maxRain": 2000,
+      "rainPeriod": "annual",
+      "note": "FAO EcoCrop documents common bean (Phaseolus vulgaris) as having an optimal temperature range of 16-25 degC and an optimal annual rainfall range of 500-2000 mm. These are climatic suitability parameters, not seven-day rainfall requirements or absolute survival limits."
+    },
+    "heuristic": {
+      "minTemp": 15,
+      "maxTemp": 27,
+      "minRain": 15,
+      "maxRain": 60,
+      "basis": "Application-defined weekly heuristic, NOT a published requirement. 15-60 mm over 7 days is an initial application assumption. Consider growth stage, soil moisture, rainfall distribution and the crop's sensitivity to waterlogging.",
+      "maxRainExtremeFactor": 1.5
+    },
+    "source": "FAO EcoCrop (Phaseolus vulgaris)",
+    "sourceUrl": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1668"
   },
   {
-    "id": "irish_potato",
-    "name": "Irish Potato",
-    "kinyarwanda": "Ibirayi",
-    "minTemp": 10,
-    "maxTemp": 20,
-    "minRain7d": 15,
-    "maxRain7d": 50,
-    "extremeRain7d": 90,
-    "note": "Prefers cool highland conditions. Heavy rain raises blight and rot risk."
+    "name": "Irish potatoes",
+    "documented":{
+      "minTemp": 15,
+      "maxTemp": 25,
+      "minRain": 500,
+      "maxRain": 800,
+      "rainPeriod": "annual",
+      "note": "FAO EcoCrop documents Irish potato (Solanum tuberosum) as having an optimal temperature range of 15-25 degC and an optimal annual rainfall range of 500-800 mm. These are climatic suitability parameters, not seven-day rainfall requirements or absolute survival limits."
+    },
+    "heuristic": {
+      "minTemp": 15,
+      "maxTemp": 24,
+      "minRain": 20,
+      "maxRain": 70,
+      "basis": "Application-defined weekly heuristic, Not a published requirement. 20-70 m over 7 days is an initial application assumption. Consider growth stage, soil moisture and the high sensitivity of potatoes to waterlogging.",
+      "maxRainExtremeFactor": 1.5
+    },
+    "source": "FAO EcoCrop (Solanum tuberosum)",
+    "sourceUrl": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1971"
   },
   {
-    "id": "cassava",
     "name": "Cassava",
-    "kinyarwanda": "Imyumbati",
-    "minTemp": 20,
-    "maxTemp": 30,
-    "minRain7d": 5,
-    "maxRain7d": 70,
-    "extremeRain7d": 120,
-    "note": "Drought tolerant once established. Cuttings need warmth and well-drained soil."
+    "documented": {
+      "minTemp": 20,
+      "maxTemp": 29,
+      "minRain": 1000,
+      "maxRain": 1500,
+      "rainPeriod": "annual",
+      "note": "FAO EcoCrop documents cassava (Manihot esculenta) as having an optimal temperature range of 20-29 degC and an optimal annual rainfall range of 1000-1500 mm. Cassava is drought-tolerant once established, but young plants require adequate moisture for establishment. These are climatic suitability parameters, not seven-day rainfall requirements or absolute survival limits."
+    },
+    "heuristic":{
+      "minTemp": 20,
+      "maxTemp": 30,
+      "minRain": 15,
+      "maxRain": 60,
+      "basis": "Application-defined weekly heuristic, Not a published requirement. 15-60 mm over 7 days is an initital application assumption for planting establishment. Account for crop age, soil moisture, drought tolerance and drainage.",
+      "maxRainExtremeFactor": 1.5
+    },
+    "source": "FAO EcoCrop (Manihot esculenta)",
+    "sourceUrl": "https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=1420"
   }
 ]
+
+
