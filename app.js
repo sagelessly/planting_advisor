@@ -872,7 +872,35 @@ async function init(){
     }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', async () =>{
+  init();
+  displayServerIdentity();
+});
+
+// server identity
+
+async function displayServerIdentity() {
+    try {
+        const response = await fetch('/server-id.txt', {
+            cache: 'no-store'
+        });
+
+        if (!response.ok) return;
+
+        const serverId = (await response.text()).trim();
+
+        if (!serverId) return;
+
+        const serverElement = document.getElementById('server-identity');
+
+        if (serverElement) {
+            serverElement.textContent = `Served by: ${serverId}`;
+        }
+     } catch (error) {
+        // Silently ignore errors during local development.
+    }
+}
+
 
 
 
